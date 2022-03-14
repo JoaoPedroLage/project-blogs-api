@@ -21,5 +21,12 @@ module.exports = (sequelize) => {
     { tableName: 'Categories' },
   );
 
+  // Category.associate = (models) => {
+  //   models.Category.belongsTo(
+  //     models.Blog,
+  //     { foreignKey: 'category_id', as: 'categoryId' },
+  //   );
+  // };
+
   return Category;
 };
