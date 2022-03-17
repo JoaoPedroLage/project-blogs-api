@@ -18,15 +18,8 @@ module.exports = (sequelize) => {
   const Category = sequelize.define(
     'Category',
     Attributes,
-    { tableName: 'Categories' },
+    { tableName: 'Categories', timestamps: false },
   );
-
-  // Category.associate = (models) => {
-  //   models.Category.belongsTo(
-  //     models.Blog,
-  //     { foreignKey: 'category_id', as: 'categoryId' },
-  //   );
-  // };
 
   return Category;
 };
