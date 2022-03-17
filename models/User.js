@@ -30,12 +30,12 @@ module.exports = (sequelize) => {
   const User = sequelize.define(
     'User',
     Attributes,
-    { tableName: 'Users' },
+    { tableName: 'Users', timestamps: false },
   );
 
-  User.associete = (models) => {
+  User.associate = (models) => {
     User.hasMany(models.BlogPost,
-      { foreignKey: 'user_id', as: 'userId' });
+      { foreignKey: 'userId', as: 'Posts' });
   };
 
   return User;
