@@ -7,10 +7,6 @@ module.exports = {
     database: 'blogs_api',
     host: process.env.HOSTNAME,
     dialect: 'mysql',
-    define: {
-      underscrored: true,
-      timestamps: false,
-    },
   },
   test: {
     username: process.env.MYSQL_USER,
