@@ -3,9 +3,8 @@ const { DataTypes } = require('sequelize');
 const Attributes = {
   postId: {
     type: DataTypes.INTEGER,
-    allowNull: false,
     references: {
-      model: 'Categories',
+      model: 'BlogPosts',
       key: 'id',
     },
     onUpdate: 'CASCADE',
@@ -13,9 +12,8 @@ const Attributes = {
   },
   categoryId: {
     type: DataTypes.INTEGER,
-    allowNull: false,
     references: {
-      model: 'BlogPosts',
+      model: 'Categories',
       key: 'id',
     },
     onUpdate: 'CASCADE',
@@ -27,18 +25,18 @@ module.exports = (sequelize) => {
     const PostCategory = sequelize.define(
       'PostCategory',
       Attributes,
-      { tableName: 'PostsCategories' },
+      { tableName: 'PostsCategories', timestamps: false },
   );
 
   PostCategory.associate = (models) => {
     models.BlogPost.belongsToMany(
       models.Category,
-      { foreignKey: 'post_id', otherKey: 'category_id', through: PostCategory, as: 'postId' },
+      { foreignKey: 'postId', otherKey: 'categoryId', through: PostCategory, as: 'postId' },
     );
 
     models.Category.belongsToMany(
       models.BlogPost,
-      { foreignKey: 'category_id', otherKey: 'post_id', through: PostCategory, as: 'categoryId' },
+      { foreignKey: 'categoryId', otherKey: 'postId', through: PostCategory, as: 'categoryId' },
     );
   };
 
