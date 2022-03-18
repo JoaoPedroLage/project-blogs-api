@@ -6,8 +6,8 @@ module.exports = {
       id: {
         type: Sequelize.INTEGER,
         primaryKey: true,
-        allowNull: false,
-        autoIncrement: true
+        autoIncrement: true,
+        allowNull: false
       },
       title: {
         type: Sequelize.STRING,
@@ -18,9 +18,8 @@ module.exports = {
         unique: true,
         allowNull: false
       },
-      user_id: {
+      userId: {
         type: Sequelize.INTEGER,
-        allowNull: false,
         references: {
           model: 'Users',
           key: 'id'
@@ -29,11 +28,12 @@ module.exports = {
         onDelete: 'CASCADE'
       },
       published: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.DATE,
         allowNull: false
+
       },
       updated: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.DATE,
         allowNull: false
       }
     });
